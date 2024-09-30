@@ -1,0 +1,25 @@
+import wollok.game.*
+import objetos.*
+
+//hgh
+describe "Futbolito" {
+
+    method initialize() {
+        game.width(15)
+        game.height(10)
+    }
+    test "Lionel no puede patear la pelota" {
+        pelota.position(game.at(7,5))
+        lionel.position(game.at(3,5))
+        assert.throwsExceptionWithMessage("Lionel no tiene la pelota", {lionel.patear(pelota)})
+    }
+
+    test "Lionel puede patear la pelota" {
+    
+        pelota.position(game.at(5,5))
+        lionel.position(game.at(5,5))
+        lionel.patear(pelota)
+        assert.equals(game.at(8,5), pelota.position())
+    
+    }
+}
