@@ -1,0 +1,17 @@
+import wollok.game.*
+import objetos.*
+
+describe "lionel.camiseta()"{
+    test "lionel cambia de camiseta donde no puede"{
+       assert.equals(lionel.casaca(), camisetaTitular)
+       lionel.position(game.at(3,5))
+       assert.throwsExceptionWithMessage("No me puedo cambiar la camiseta aca", {lionel.camiseta()})
+    }
+
+    test "lionel cambia de camiseta donde puede"{
+        assert.equals(lionel.casaca(), camisetaTitular)
+        lionel.position(game.at(0,5))
+        lionel.camiseta()
+        assert.equals(lionel.casaca(), camisetaSuplente)
+    }
+}
