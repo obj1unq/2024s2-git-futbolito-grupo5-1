@@ -16,6 +16,21 @@ object lionel {
 	method avanzar() {
 		position = game.at((game.width() - 1).min(position.x() + 1), position.y()) 
 	}
+
+	method validarSiTienePelota(pelota) {
+		return if (not self.tienePelota(pelota)) {
+			self.error("Lionel no tiene la pelota")
+		}
+	}
+
+	method tienePelota(pelota) {
+		return self.position() == pelota.position()
+	}
+
+	method patear(pelota) {
+		self.validarSiTienePelota(pelota)
+		pelota.position(game.at((game.width() - 1).min(position.x() + 3), position.y()))
+	}
 	
 }
 
