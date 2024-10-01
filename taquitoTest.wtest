@@ -1,0 +1,31 @@
+import objetos.*
+import wollok.game.*
+
+describe "Lionel practica tirar taquitos" {
+    method initialize() { 
+        game.width(15)
+	    game.height(10)
+    } 
+    test "taquito" {
+        
+        lionel.position(game.at(5, 5))
+        pelota.position(game.at(5, 5))
+        lionel.hacerTaquito()
+        assert.equals(pelota.position(), game.at(3, 5))
+    }
+
+    test "no puede hacer taquito" {
+
+        lionel.position(game.at(2, 5))
+        pelota.position(game.at(5, 5))
+        assert.throwsExceptionWithMessage("No tengo la pelota", {lionel.hacerTaquito()})
+    }
+
+    test "caso borde" {
+
+        lionel.position(game.at(1, 5))
+        pelota.position(game.at(1, 5))
+        lionel.hacerTaquito()
+        assert.equals(pelota.position(), game.at(0, 5))
+    }
+}
