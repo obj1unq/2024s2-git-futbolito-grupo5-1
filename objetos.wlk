@@ -19,6 +19,7 @@ object lionel {
 		position = game.at((game.width() - 1).min(position.x() + 1), position.y()) 
 	}
 
+
 	method camiseta(){
 		self.validarCamiseta()
 		casaca.cambiarCamiseta()
@@ -31,6 +32,22 @@ object lionel {
 			self.error("No me puedo cambiar la camiseta aca")
 		}
 	}
+
+	method validarSiTienePelota(pelota) {
+		return if (not self.tienePelota(pelota)) {
+			self.error("Lionel no tiene la pelota")
+		}
+	}
+
+	method tienePelota(pelota) {
+		return self.position() == pelota.position()
+	}
+
+	method patear(pelota) {
+		self.validarSiTienePelota(pelota)
+		pelota.position(game.at((game.width() - 1).min(position.x() + 3), position.y()))
+	}
+
 	
 	method estaEnBordeIzquierdo(){
 		return position.x() == 0

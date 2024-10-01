@@ -12,6 +12,7 @@ program futbolito{
 	keyboard.left().onPressDo({lionel.retroceder()})
 	keyboard.right().onPressDo({lionel.avanzar()})
 	keyboard.c().onPressDo({lionel.camiseta()})
+	keyboard.p().onPressDo({lionel.patear(pelota)})
 
 	game.start()
 
