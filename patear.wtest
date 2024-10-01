@@ -11,14 +11,14 @@ describe "Futbolito" {
     test "Lionel no puede patear la pelota" {
         pelota.position(game.at(7,5))
         lionel.position(game.at(3,5))
-        assert.throwsExceptionWithMessage("Lionel no tiene la pelota", {lionel.patear(pelota)})
+        assert.throwsExceptionWithMessage("Lionel no tiene la pelota", {lionel.patear()})
     }
 
     test "Lionel puede patear la pelota" {
     
         pelota.position(game.at(5,5))
         lionel.position(game.at(5,5))
-        lionel.patear(pelota)
+        lionel.patear()
         assert.equals(game.at(8,5), pelota.position())
     
     }
